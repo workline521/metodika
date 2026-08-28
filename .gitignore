@@ -1,11 +1,18 @@
-# Секретные настройки (тут пароли от БД!)
+# WordPress core (обычно не хранят в Git, но если уже залили – оставьте, но исключим настройки)
 wp-config.php
+wp-config-sample.php
 
-# Медиафайлы и загрузки
+# Папки с загрузками, кешем, резервными копиями
 wp-content/uploads/
 wp-content/upgrade/
-wp-content/backup-db/
 wp-content/cache/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+
+# Ненужные стандартные плагины (их можно удалить совсем)
 wp-content/plugins/hello.php
 wp-content/plugins/akismet/
 
@@ -13,7 +20,16 @@ wp-content/plugins/akismet/
 *.log
 *.tmp
 *.swp
+*.swo
+*.sql
+*.sql.gz
 
-# Если используете Composer или Node.js
+# Папки менеджеров зависимостей (если используете)
 vendor/
 node_modules/
+
+# Файлы IDE и ОС
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
