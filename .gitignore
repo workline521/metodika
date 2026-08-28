@@ -1,0 +1,19 @@
+# Секретные настройки (тут пароли от БД!)
+wp-config.php
+
+# Медиафайлы и загрузки
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/cache/
+wp-content/plugins/hello.php
+wp-content/plugins/akismet/
+
+# Логи и временные файлы
+*.log
+*.tmp
+*.swp
+
+# Если используете Composer или Node.js
+vendor/
+node_modules/
