@@ -53,9 +53,25 @@ function metodika_setup() {
 		)
 	);
 
-	/*
-		* Switch default core markup for search form, comment form, and comments
-		* to output valid HTML5.
+	// Добавляем описание под ссылками в меню (без Walker)
+	add_filter('walker_nav_menu_start_el', 'add_description_to_menu_items', 10, 4);
+	function add_description_to_menu_items($item_output, $item, $depth, $args)
+	{
+		// Если есть описание и глубина > 0 (т.е. подменю), добавляем span
+		if (!empty($item->description) && $depth > 0) {
+			// Вставляем описание внутри <a>, после текста ссылки
+			$item_output = preg_replace(
+				'/(<a[^>]*>.*?)(<\/a>)/i',
+				'$1 <span class="menu-item-description">' . esc_html($item->description) . '</span>$2',
+				$item_output
+			);
+		}
+		return $item_output;
+	}
+	
+		/*
+		Switch default core markup for search form, comment form, and comments
+		to output valid HTML5.
 		*/
 	add_theme_support(
 		'html5',
@@ -139,9 +155,10 @@ add_action( 'widgets_init', 'metodika_widgets_init' );
  */
 function metodika_scripts() {
 	wp_enqueue_style( 'metodika-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style('main', get_template_directory_uri() . '/assets/css/layout.css');
 	wp_style_add_data( 'metodika-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'metodika-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'metodika-navigation', get_template_directory_uri() . '/assets/js/layout.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
