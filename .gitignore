@@ -5,6 +5,8 @@ wp-config-sample.php
 # Папки с загрузками, кешем, резервными копиями
 wp-content/uploads/
 wp-content/upgrade/
+wp-content/plugins/
+wp-content/updraft/
 wp-content/cache/
 wp-content/backup-db/
 wp-content/backups/
